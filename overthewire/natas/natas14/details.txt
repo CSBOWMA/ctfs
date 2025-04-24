@@ -1,0 +1,12 @@
+In this level we are presented with a normal log in
+screen and the source code. Here we can see that the 
+login is from a mysql database on localhost with the line
+"$link = mysqli_connect('localhost', 'natas14', '<censored>');"
+We can also see how the query is formed on this line,
+'$query = "SELECT * from users where username=\"".$_REQUEST["username"]."\" and password=\"".$_REQUEST["password"]."\"";'
+Here it is obvious that there is no form of sanitization on user
+input. We can also see that the password is shown if the database
+returns at least 1 row,
+"if(mysqli_num_rows(mysqli_query($link, $query)) > 0) {"
+\" or 1 = 1 or  username = \"
+\" or 1 = 1 or password = \"

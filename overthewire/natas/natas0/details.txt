@@ -1,0 +1,1 @@
+Password for level1 can be found in the div with the id content
