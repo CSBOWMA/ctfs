@@ -1,0 +1,2 @@
+Similar to last challenge, 
+but you need to use the inspect element shortcut, CTRL+SHIFT+I

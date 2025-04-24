@@ -1,0 +1,22 @@
+This time we are presented with the information that the password 
+is protected by an xor cypher. When checking the provided source
+code we can see that a cookie is generated and then it is turned
+into a json token, xor encrypted and finally base64 encoded. Then 
+finally it is given to the user. If we intercept the packets on 
+Burp Suite we can see the data cookie
+"data=HmYkBwozJw4WNyAAFyB1VUcqOE1JZjUIBis7ABdmbU1GIjEJAyIxTRg%3D"
+which is recieved by the server and decoded. First lets take the value
+and base64 decode it. After piping the the decoded data to a file we can
+we can see that it is encrypted with secret key that we dont have access to.
+If we look into the loadData function we can see that the token is a json token,
+"$tempdata = json_decode(xor_encrypt(base64_decode($_COOKIE["data"])), true)",
+we can also see that the default token is '{showpassword":"no","bgcolor":"#ffffff"}'
+with the line "$defaultdata = array( "showpassword"=>"no", "bgcolor"=>"#ffffff");"
+With this, and the fact that if a^b=c then a^c=b we can change the key to the default
+token to get the password. After using the first token we can see a repeating sequence of
+the letters "eDWo", which we can assume to be the encryption key. with this we can create
+our own data with show password set to yes '{showpassword":"yes","bgcolor":"#ffffff"}',
+and then we can encrypt and base64 encode the data, to get
+"HmYkBwozJw4WNyAAFyB1VUc9MhxHaHUNAic4Awo2dVVHZzEJAyIxCUc5". Finally if we set this as our
+data cookie in Burp Suite, the password for the next level is loaded on the screen.
+

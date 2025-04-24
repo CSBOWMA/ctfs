@@ -1,0 +1,6 @@
+This time you can see that you dont have access due to coming
+from the wrong website. It is requested that you connect from 
+"http://natas5.natas.labs.overthewire.org/", which isnt possible
+as you dont have access yet. Instead you can use a referer 
+modifier to change the address the website thinks you are 
+coming from. This allows you to get the password.

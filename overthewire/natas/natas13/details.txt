@@ -1,0 +1,16 @@
+This time our input is checked if it is an image. After
+checking the source code, we can see this is achieved by
+using the exif_imagetype function on the line, 
+"else if (! exif_imagetype($_FILES['uploadedfile']['tmp_name']))",
+After reading the documentation we can see that this function achieves
+this by checking the file signature of the input file to see if it
+matches a list of predefined file types. We can check a list of
+file signatures to find out that that the signature for a jpg is
+"FF D8 FF E0 00 10 4A 46 49 46 00 01" in hex. We can now take our
+input from the last level, "<?php echo shell_exec('cat /etc/natas_webpass/natas14');?>",
+and add this signature before beginning the php script, to trick the
+function into thinking that the file is an image. After changing 
+"<input type="hidden" name="filename" value="<?php print genRandomString(); ?>.jpg" />"
+to "<input type="hidden" name="filename" value="<?php print genRandomString(); ?>.php" />"
+in the source code we are able to send over the php script and execute it on the website.
+Then finally we remove the file signature from the beginning of the code to get our password.

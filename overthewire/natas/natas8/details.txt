@@ -1,0 +1,9 @@
+We are once again prompted to input a secret and provided the sourcecode.
+This time we can see our target "3d3d516343746d4d6d6c315669563362".
+We can also see that when we input a password it goes through a series
+of steps before it is compared to stored secret. First it is base64
+encoded, then reversed, and finally converted to a hex representation.
+If we were to perform the inverse of these operations in reverse order,
+we should be able to get the required input in the password. After writing
+a PHP script we are able to find out the decoded secret is "oubWYf2kBq".
+When we enter this into the input access is granted and we have the next password.

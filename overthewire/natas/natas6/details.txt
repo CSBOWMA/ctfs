@@ -1,0 +1,7 @@
+This time we are presented with an input and the ability
+to view the sourcecode. In the source code we can see that
+the file "includes/secret.inc" is included. After checking
+we can see that the file is exposed due to a likely
+misconfiguration. When visiting this file we can find the
+secret which we can enter into the text box to get the password
+for the next level.

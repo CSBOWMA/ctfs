@@ -1,0 +1,7 @@
+This time in the html you can find the statement 
+"No more information leaks!! Not even Google will find it this time..."
+This is likely a reference to "robots.txt" which stores info for 
+search engines for which directories and files to not search.
+
+After checking robots.txt you can see that a "s3cret" directory is blocked,
+which when checking you can find a users.txt file containing the password for natas4.

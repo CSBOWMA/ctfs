@@ -1,0 +1,6 @@
+This time we are presented with the option of a home page and an
+about page. When we change between the two pages we can see that
+the page is generated at request, index.php?page="page". When inspecting
+the html we see a hint that the password is stored at
+"/etc/natas_webpass/natas8". When you change the page to this link
+we can see that it returns the passwordi for the next level.

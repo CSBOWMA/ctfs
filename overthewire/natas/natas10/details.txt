@@ -1,0 +1,8 @@
+This time we are unable to use pipes or escape the text when inputting a string,
+due to a new part of the code "if(preg_match('/[;|&]/',$key)) {print 
+"Input contains an illegal character!";"}". We must return the password from
+"/etc/natas_webpass/natas11" without using only the grep command. One such way is
+by adding the file to the list of files searched by grep and searching for a blank
+pattern, e.g. "". We do this by inputting '"" /etc/natas_webpass/natas11' into the
+search bar. Which when the command executes we can see the password at the top of
+the list.

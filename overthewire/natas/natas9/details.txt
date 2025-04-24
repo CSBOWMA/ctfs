@@ -1,0 +1,12 @@
+Here we are presented with a text box to search and the source code.
+We can see in the source code that the users input is used to search a file.
+It all can be seen that this is happening by executing the grep command on the file.
+If we are able to find out where the next password is, and modify the grep command, we
+should be able to find the next password. First we should modify the grep command to
+return more info than it should. We can see our input is injected as the $key variable
+in this command "grep -i $key dictionary.txt", we can execute any command and get its 
+output by inputting "| <command> | tee ", we can use this to find info about our current
+directory with "| ls . | tee " which shows there is no useful info here. If we remember
+from an earlier challenge, passwords for challenges are stored in "/etc/natas_webpass",
+with this info we can run the command "| cat /etc/natas_webpass/natas10 | tee " which
+returns the password for the next level.

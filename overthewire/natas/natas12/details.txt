@@ -1,0 +1,20 @@
+For this challenge the user is able to upload a jpeg to the server
+and have the webserver open the jpeg. When we look in the source code
+we can see that the file itself isn't verified to be a jpeg, 
+"function makeRandomPathFromFilename($dir, $fn) {
+    $ext = pathinfo($fn, PATHINFO_EXTENSION);
+    return makeRandomPath($dir, $ext);
+}" Instead whatever we input keeps its extension and the name is randomized.
+WIth this info we can create a simple php script to have the server run, and
+execute. Using the info from the previous challenges we can assume the file
+path we want is "/etc/natas_webpass/natas13" and we just need the server to
+read the contents. To do so I created a php script for the server to execute,
+"<?php echo shell_exec('cat /etc/natas_webpass/natas13');?>", this should read
+the file and give us the key. When we input this into the file upload we can 
+see that it still being converted to a jpeg, so after looking at the code for
+a little longer we can see that the file is still being converted before upload.
+"<input type="hidden" name="filename" value="<?php print genRandomString(); ?>.jpg" />"
+We can see that the filtering is on client side, meaning that we can change the ".jpg",
+"<input type="hidden" name="filename" value="<?php print genRandomString(); ?>.php" />".
+After changing the extension to .php we are now able to execute our php code on remote
+giving us the password for the next level.

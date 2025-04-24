@@ -1,0 +1,4 @@
+In the html an image can be found "files/pixel.png"
+Due to misconfiguration you are able to perform directory
+listing on the "files" directory, which allows you to find "users.txt"
+which contains the password for the next level.

@@ -1,0 +1,5 @@
+This time you are only presented with info about not being logged in.
+Inspecting element seems to provide no direction, so instead lets look
+at the request in Burp Suite. When checking the GET request you can see
+"Cookie:  loggedin=0" this shows that we are likely sending a request as someone
+not logged in. By changing the value from 0 to 1 we are sent back the password.
